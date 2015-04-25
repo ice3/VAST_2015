@@ -5,8 +5,8 @@ import sqlite3
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("data")
-    parser.add_argument("db")
+    parser.add_argument("data", help="the path to the .csv file")
+    parser.add_argument("db", help="the path of the sqlite3 file to create")
     args = parser.parse_args()
     return args
 
