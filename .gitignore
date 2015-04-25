@@ -1,7 +1,5 @@
 # don't commit data
 Challenge1/data/*
 *.csv
-
-#don't commit db
 *.db
 
