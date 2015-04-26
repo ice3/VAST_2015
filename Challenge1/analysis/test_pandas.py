@@ -30,8 +30,7 @@ def create_heatmaps(df, key=lambda t: t.minute):
 		print("saving: ", group)
 		plt.savefig("{:02}.png".format(group))
 
-len(df2[df2.status=="movement"])
-len(df2[df2.status=="check-in"])
+create_heatmaps(df)
 
 plt.plot(df2[df2.status=="check-in"].x, df2[df2.status=="check-in"].y)
 plt.show()
