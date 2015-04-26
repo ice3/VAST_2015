@@ -19,18 +19,16 @@ df = get_data("./saturday.db", "spatial_data", 500000)
 # # or
 # bars.open.at_time('9:30')
 
-
-for group, data in df.groupby(df.index.map(lambda t: t.minute)):
-	all_mat = np.zeros((100,100), dtype=np.int)
-	for x, y in zip(data.x, data.y):
-		all_mat[x, y] += 1
-	all_mat = all_mat*1.0/len(data)
-	plt.matshow(all_mat)
-	plt.title(data.ix[0].name)
-	print("saving: ", group)
-	plt.savefig("{:02}.png".format(group))
-
-
+def create_heatmaps(df, key=lambda t: t.minute):
+	for group, data in df.groupby(df.index.map(key)):
+		all_mat = np.zeros((100,100), dtype=np.int)
+		for x, y in zip(data.x, data.y):
+			all_mat[x, y] += 1
+		all_mat = all_mat*1.0/len(data)
+		plt.matshow(all_mat)
+		plt.title(data.ix[0].name)
+		print("saving: ", group)
+		plt.savefig("{:02}.png".format(group))
 
 len(df2[df2.status=="movement"])
 len(df2[df2.status=="check-in"])
