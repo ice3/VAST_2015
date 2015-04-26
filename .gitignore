@@ -2,4 +2,5 @@
 Challenge1/data/*
 *.csv
 *.db
-
+.DS_Store
+*.npy
