@@ -32,6 +32,17 @@ def create_heatmaps(df, key=lambda t: t.minute):
 
 create_heatmaps(df)
 
+def create_path_id(df, ids):
+	def getId(i): return df[df.id==i]
+	for id_ in ids:
+		plt.scatter(getId(id_).x,
+			     getId(id_).y,
+			     label = str(id_))
+	plt.legend()
+
+id_unique = df.id.unique()
+create_path_id(df, id_unique[:10])
+
 plt.plot(df2[df2.status=="check-in"].x, df2[df2.status=="check-in"].y)
 plt.show()
 
